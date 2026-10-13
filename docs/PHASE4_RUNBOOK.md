@@ -1,6 +1,6 @@
 # Phase 4: local authentication preparation
 
-Azure deployment is blocked pending Microsoft case 2610090030001261. This release creates no Azure resources. It is not a cloud deployment.
+Historical Phase 4 instructions. Azure was blocked by a subscription restriction; the current project has since been verified on AWS. See [AWS runbook](AWS_RUNBOOK.md) and the current README for deployment and CI evidence.
 
 ## Apply on Mac
 
@@ -23,7 +23,7 @@ The authorization checker expects the existing synthetic snapshot to be loaded a
 
 Compose requires API_AUTH_TOKEN. The standalone Python server retains no-token local compatibility when the environment variable is absent; any future cloud deployment must explicitly require a nonempty secret. Only `/health/data` and `/analytics/sales-summary` require a Bearer token; `/health/live`, `/health/ready`, and root metadata remain public. Authorization is checked before querying data. Health readiness remains database connectivity only. Tokens are compared using constant-time comparison, duplicate Authorization headers are rejected, and headers/tokens are not logged.
 
-This is shared-secret demo authorization, not individual identity, OAuth, Entra integration, rate limiting, or production readiness. Remote traffic must use HTTPS. The stdlib HTTP server is a demo server and needs review or replacement before production exposure.
+This is shared-secret demo authorization, not individual identity, OAuth, Entra integration, rate limiting, or production readiness. Use HTTPS for public HTTP endpoints, or an encrypted SSH tunnel for this localhost-only demo. The stdlib HTTP server is a demo server and needs review or replacement before production exposure.
 
 ## Azure next stage
 
