@@ -1,0 +1,235 @@
+[scenario]
+seed = 20261005
+start_date = "2024-01-01"
+as_of_date = "2026-09-30"
+required_numpy_version = "2.3.5"
+
+[demand]
+store_size_sigma = 0.20
+store_size_min = 0.6
+store_size_max = 1.6
+noise_shape = 20.0
+opening_days = 10.0
+
+[replenishment]
+history_days = 14
+review_days = 1
+safety_z = 1.28
+order_cycle_days = 5
+bootstrap_days = 14
+
+[delivery]
+delay_days = [-1, 0, 1, 2, 3]
+delay_probabilities = [0.04, 0.81, 0.09, 0.04, 0.02]
+in_full_probability = 0.93
+short_fill_min = 0.60
+short_fill_max = 0.95
+min_observed_delivery_qty = 1
+
+[promotion]
+months_full_year = [2, 6, 10]
+months_final_year = [2, 6]
+min_days = 7
+max_days = 14
+min_gap_days = 45
+discounts = [10, 15, 20, 25, 30]
+effect_sigma = 0.20
+post_days = 14
+post_dip_fraction = 0.25
+max_post_dip = 0.95
+mechanic = "PRICE_DISCOUNT"
+
+[disruption]
+event_count = 24
+min_days = 5
+max_days = 14
+extra_delay_min = 4
+extra_delay_max = 9
+fill_min = 0.0
+fill_max = 0.5
+
+[inventory]
+shrink_probability = 0.001
+shrink_max_qty = 2
+
+[pricing]
+annual_growth_min = 0.0
+annual_growth_max = 0.04
+invoice_ratio = 0.80
+
+[target]
+years = [2025, 2026]
+planner_noise_min = 0.97
+planner_noise_max = 1.03
+
+[sanity]
+stockout_min = 0.01
+stockout_max = 0.08
+otif_min = 0.70
+otif_max = 0.92
+min_disruptions = 20
+
+[[customers]]
+id = "C01"
+name = "Meridian Market"
+channel = "Modern Trade"
+annual_growth = 0.06
+planned_growth = 0.10
+lead_days = 2
+weekend_factor = 1.20
+promo_start_day = 12
+[[customers]]
+id = "C02"
+name = "Summit Wholesale"
+channel = "Wholesale"
+annual_growth = -0.03
+planned_growth = 0.05
+lead_days = 3
+weekend_factor = 0.85
+promo_start_day = 23
+[[customers]]
+id = "C03"
+name = "Willow Supermarket"
+channel = "Supermarket"
+annual_growth = 0.12
+planned_growth = 0.15
+lead_days = 2
+weekend_factor = 1.20
+promo_start_day = 5
+
+[[categories]]
+name = "Coffee"
+base_rate = 8.0
+promo_k = 2.0
+seasonality = [0.90,0.90,0.98,1.12,1.00,0.95,0.98,1.00,1.02,1.08,1.15,1.30]
+[[categories]]
+name = "Canned Fish"
+base_rate = 12.0
+promo_k = 1.5
+seasonality = [0.95,0.96,1.00,1.03,1.00,0.98,1.00,1.00,1.02,1.04,1.08,1.20]
+[[categories]]
+name = "Oral Care"
+base_rate = 9.0
+promo_k = 1.2
+seasonality = [0.95,0.95,1.00,1.04,1.00,0.99,1.00,1.00,1.01,1.04,1.08,1.20]
+[[categories]]
+name = "Snacks"
+base_rate = 18.0
+promo_k = 2.5
+seasonality = [0.85,0.88,0.95,1.15,1.00,0.95,1.00,1.02,1.05,1.12,1.25,1.45]
+
+[[products]]
+id = "P01"
+name = "Gold Coffee Jar 200g"
+brand = "Aurora"
+category = "Coffee"
+shelf_price_satang = 22900
+case_size = 12
+popularity = 1.10
+country_of_origin = "Italy"
+import_lead_days = 60
+moq_cases = 10
+[[products]]
+id = "P02"
+name = "Classic Coffee Jar 200g"
+brand = "Aurora"
+category = "Coffee"
+shelf_price_satang = 19900
+case_size = 12
+popularity = 0.90
+country_of_origin = "Italy"
+import_lead_days = 60
+moq_cases = 10
+[[products]]
+id = "P03"
+name = "3-in-1 Coffee Sachet x20"
+brand = "Aurora"
+category = "Coffee"
+shelf_price_satang = 12900
+case_size = 12
+popularity = 1.20
+country_of_origin = "Vietnam"
+import_lead_days = 20
+moq_cases = 20
+[[products]]
+id = "P04"
+name = "Sardines Tomato 155g"
+brand = "Harbor"
+category = "Canned Fish"
+shelf_price_satang = 3500
+case_size = 24
+popularity = 1.20
+country_of_origin = "Vietnam"
+import_lead_days = 20
+moq_cases = 20
+[[products]]
+id = "P05"
+name = "Tuna Brine 165g"
+brand = "Harbor"
+category = "Canned Fish"
+shelf_price_satang = 4500
+case_size = 24
+popularity = 0.85
+country_of_origin = "Vietnam"
+import_lead_days = 20
+moq_cases = 20
+[[products]]
+id = "P06"
+name = "Fresh Toothpaste 150g"
+brand = "Smile"
+category = "Oral Care"
+shelf_price_satang = 6900
+case_size = 24
+popularity = 1.10
+country_of_origin = "Malaysia"
+import_lead_days = 30
+moq_cases = 15
+[[products]]
+id = "P07"
+name = "Mint Toothpaste 100g"
+brand = "Smile"
+category = "Oral Care"
+shelf_price_satang = 4900
+case_size = 24
+popularity = 0.90
+country_of_origin = "Malaysia"
+import_lead_days = 30
+moq_cases = 15
+[[products]]
+id = "P08"
+name = "Chocolate Wafer 30g"
+brand = "Cocoa"
+category = "Snacks"
+shelf_price_satang = 1200
+case_size = 48
+popularity = 1.20
+country_of_origin = "Indonesia"
+import_lead_days = 25
+moq_cases = 20
+[[products]]
+id = "P09"
+name = "Chocolate Bar 40g"
+brand = "Cocoa"
+category = "Snacks"
+shelf_price_satang = 1900
+case_size = 48
+popularity = 0.85
+country_of_origin = "Indonesia"
+import_lead_days = 25
+moq_cases = 20
+[[products]]
+id = "P10"
+name = "Potato Crisps 50g"
+brand = "Crispa"
+category = "Snacks"
+shelf_price_satang = 2500
+case_size = 48
+popularity = 1.10
+country_of_origin = "Indonesia"
+import_lead_days = 25
+moq_cases = 20
+
+[stores]
+regions = ["BKK", "Central", "North", "Northeast", "South"]
+tiers = ["A", "B", "B", "C", "C"]
+tier_factors = { A = 1.15, B = 1.0, C = 0.85 }

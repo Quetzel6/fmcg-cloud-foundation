@@ -1,0 +1,119 @@
+{
+  "status": "passed",
+  "rules": [
+    {
+      "id": "DQ-01",
+      "severity": "ERROR",
+      "count": 0,
+      "examples": []
+    },
+    {
+      "id": "DQ-02",
+      "severity": "ERROR",
+      "count": 0,
+      "examples": []
+    },
+    {
+      "id": "DQ-03",
+      "severity": "ERROR",
+      "count": 0,
+      "examples": []
+    },
+    {
+      "id": "DQ-04",
+      "severity": "ERROR",
+      "count": 0,
+      "examples": []
+    },
+    {
+      "id": "DQ-05",
+      "severity": "ERROR",
+      "count": 0,
+      "examples": []
+    },
+    {
+      "id": "DQ-06",
+      "severity": "ERROR",
+      "count": 0,
+      "examples": []
+    },
+    {
+      "id": "DQ-07",
+      "severity": "ERROR",
+      "count": 0,
+      "examples": []
+    },
+    {
+      "id": "DQ-08",
+      "severity": "ERROR",
+      "count": 0,
+      "examples": []
+    },
+    {
+      "id": "DQ-09",
+      "severity": "ERROR",
+      "count": 0,
+      "examples": []
+    },
+    {
+      "id": "DQ-10",
+      "severity": "ERROR",
+      "count": 0,
+      "examples": []
+    },
+    {
+      "id": "DQ-11",
+      "severity": "ERROR",
+      "count": 0,
+      "examples": []
+    },
+    {
+      "id": "DQ-12",
+      "severity": "ERROR",
+      "count": 0,
+      "examples": []
+    },
+    {
+      "id": "DQ-13",
+      "severity": "ERROR",
+      "count": 0,
+      "examples": []
+    },
+    {
+      "id": "DQ-14",
+      "severity": "ERROR",
+      "count": 0,
+      "examples": []
+    },
+    {
+      "id": "DQ-15",
+      "severity": "ERROR",
+      "count": 0,
+      "examples": []
+    },
+    {
+      "id": "DQ-16",
+      "severity": "ERROR",
+      "count": 0,
+      "examples": []
+    },
+    {
+      "id": "DQ-17",
+      "severity": "WARN",
+      "count": 0,
+      "examples": []
+    }
+  ],
+  "scenario_metrics": {
+    "true_stockout_day_rate": 0.014913678618857902,
+    "line_otif_rate": 0.7883459975260647,
+    "disruption_events": 24,
+    "promotion_count": 240,
+    "stockout_categories": [
+      "Canned Fish",
+      "Coffee",
+      "Oral Care",
+      "Snacks"
+    ]
+  }
+}

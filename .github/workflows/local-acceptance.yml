@@ -1,0 +1,47 @@
+name: Cloud foundation acceptance
+on: [push, pull_request]
+jobs:
+  local-acceptance:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - run: python -m unittest discover -s tests -v
+      - name: Start local stack
+        run: |
+          python -c 'import secrets; from pathlib import Path; Path(".env").write_text("POSTGRES_PASSWORD=" + secrets.token_hex(24) + "\n")'
+          python scripts_env_upgrade.py
+          python scripts_auth_setup.py
+          python scripts_auth_setup.py
+          docker compose build api loader
+          docker compose up -d --wait postgres
+          docker compose run --rm --no-deps loader
+          docker compose up -d --wait api
+          python scripts_check.py
+      - name: Synthetic integration
+        run: |
+          python scripts_check_data.py --unloaded
+          docker compose run --rm --no-deps -e ALLOW_DEMO_REPLACE=yes loader python scripts_ingest.py
+          python scripts_check_data.py > /tmp/summary-before.jsonl
+          docker compose run --rm --no-deps -e ALLOW_DEMO_REPLACE=yes loader python scripts_ingest.py
+          python scripts_check_data.py > /tmp/summary-after.jsonl
+          diff /tmp/summary-before.jsonl /tmp/summary-after.jsonl
+          docker compose exec -T api python scripts_check_access.py
+          python scripts_check_auth.py
+          python scripts_check_auth.py
+      - name: Database failure and recovery
+        run: |
+          docker compose stop postgres
+          python scripts_check.py --database-down
+          python scripts_check_data.py --unloaded
+          docker compose start postgres
+          for attempt in $(seq 1 20); do
+            if python scripts_check.py && python scripts_check_data.py; then exit 0; fi
+            sleep 2
+          done
+          exit 1
+      - name: Teardown disposable CI database
+        if: always()
+        run: docker compose down -v

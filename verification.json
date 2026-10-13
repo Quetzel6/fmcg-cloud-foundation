@@ -1,0 +1,17 @@
+{
+  "phase": "aws_demo_verified",
+  "unit_http_env_tests": {
+    "passed": 14,
+    "database": "stubbed HTTP tests"
+  },
+  "postgres_role_denial_tests": "passed; user terminal evidence",
+  "repeat_load_grant_restore": "user reports matching aggregate",
+  "restore_sales_aggregate": "user terminal matched 150600|1931506|11929529809|2024-01-01|2026-09-30; not full restore verification",
+  "cloud_deployment": "AWS EC2; user terminal evidence through 2026-10-13",
+  "phase4_mac_docker_auth": "passed; user terminal evidence",
+  "github_ci": "not_run",
+  "aws_data_auth_access": "passed; user terminal evidence",
+  "aws_backup_restore": "sales aggregates match; not full row/table/ACL verification",
+  "off_host_backup_sha256": "bfafdb4feb78d61814b33727bf1020e1a3b4a0f613cb1283e8c623bef33f159e",
+  "service_recovery": "passed after reported EC2 stop/start and manual Compose startup"
+}

@@ -1,0 +1,50 @@
+services:
+  postgres:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: fmcg_cloud
+      POSTGRES_USER: fmcg_cloud
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Keep existing POSTGRES_PASSWORD in .env}
+    volumes:
+      - cloud_pg:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U fmcg_cloud -d fmcg_cloud"]
+      interval: 5s
+      timeout: 3s
+      retries: 12
+  api:
+    build: .
+    environment:
+      API_AUTH_TOKEN: ${API_AUTH_TOKEN:?Run python3 scripts_auth_setup.py}
+      DATABASE_URL: postgresql://fmcg_api:${API_DB_PASSWORD:?Run python3 scripts_env_upgrade.py}@postgres:5432/fmcg_cloud
+    ports:
+      - "127.0.0.1:8080:8080"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    read_only: true
+    tmpfs:
+      - /tmp
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+  loader:
+    build: .
+    profiles: [tools]
+    environment:
+      DATABASE_URL: postgresql://fmcg_cloud:${POSTGRES_PASSWORD:?Keep existing POSTGRES_PASSWORD in .env}@postgres:5432/fmcg_cloud
+      API_DB_PASSWORD: ${API_DB_PASSWORD:?Run python3 scripts_env_upgrade.py}
+    command: ["python", "scripts_access_setup.py"]
+    depends_on:
+      postgres:
+        condition: service_healthy
+    read_only: true
+    tmpfs:
+      - /tmp
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+volumes:
+  cloud_pg:

@@ -1,0 +1,17 @@
+{
+  "source": "existing FMCG working snapshot; no new generator logic",
+  "files_sha256": {
+    "src/fmcg/__init__.py": "c8ebd41dc56da78bd9dfab5bee4a484247187ba3e9b948a6f4298ed16677a5c9",
+    "src/fmcg/contracts.py": "cf9f7d91b385abf737b4820f58149b13c73f5739317c2856d86bfcde536f6b8d",
+    "src/fmcg/generate.py": "d83e8e080b2b02d14fa4ec35ece58c7719c80fa9f4a8edc96b1b94b2ae0637ae",
+    "src/fmcg/validate.py": "572c23c79c6a27bc5d953af0010db93a79d554a2f01bea2f8c5771f1f22983a4",
+    "src/fmcg/load.py": "539015a2ea44f6a1af4e5fd41e136052b4a388742b981ac9e6262eab26b69deb",
+    "sql/schema.sql": "8c1dfd5087ce230249228d56a9d07a6d8d9f56d0695a4e66220138a48ded849f",
+    "sql/m2_views.sql": "81852d901ef060c04dd6e329b3e0d3ad087095004fc5d2984e9336ad1a9b1d83",
+    "config/scenario.toml": "6b8fc8010d89f88a31e0b9fda3b6f5eb45bef4ac05500757e34b4363138e7215"
+  },
+  "local_modifications": {
+    "src/fmcg/load.py": "Optional after_reconcile callback restores API grants in the same transaction as snapshot replacement; generator and validation unchanged."
+  },
+  "current_loader_sha256": "9d158432984b6b9e7eb4be5e82447aec13d3ceba8a085d9cc6d2bc1d1f167d44"
+}
