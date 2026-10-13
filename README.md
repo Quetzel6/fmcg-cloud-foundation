@@ -38,9 +38,18 @@ Backup: fmcg_20261013_025851.dump. SHA-256: bfafdb4feb78d61814b33727bf1020e1a3b4
 The first source comparison file was empty; a successful source query regenerated it before the final matching comparison. Restore verification covers sales aggregates, not every row or table. The dump omits ownership and ACLs; it does not restore roles or prove restored API permissions. Access probes were run against the active original database. No RTO/RPO was measured.
 
 ## Limits and next improvements
-No public HTTPS endpoint, high availability, performance benchmark, automatic restart policy, centralized monitoring/alerts, infrastructure as code or CI execution evidence is claimed. The standalone server allows local unauthenticated operation if its token environment is absent; Compose requires a token. The loader uses an elevated lab owner role. No measured business uplift or real customer data was used.
+No public HTTPS endpoint, high availability, performance benchmark, automatic restart policy, centralized monitoring/alerts, infrastructure as code is claimed; GitHub Actions verification is recorded below. The standalone server allows local unauthenticated operation if its token environment is absent; Compose requires a token. The loader uses an elevated lab owner role. No measured business uplift or real customer data was used.
 
 Azure resource creation was blocked by a subscription restriction; this deployment was completed on AWS. AWS Free plan and initial 100 USD credit were observed at signup; current credit balance and actual spend have not been verified. Stop compute when idle, retain EBS for data, and review Billing. Budget alerts are not a spending cap.
 
+## GitHub Actions and project links
+
+[Cloud acceptance run](https://github.com/Quetzel6/fmcg-cloud-foundation/actions/runs/38371740483) passed on 13 October 2026 for commit `fac09ce4d129fdbef527c200e4189656da4c3cb4`. It runs unit tests, a disposable Docker/PostgreSQL stack, repeated synthetic ingestion, API/database access checks and database outage recovery. This CI run tests a GitHub runner, not the deployed EC2 host.
+
+- [Analytics platform](https://github.com/Quetzel6/fmcg-analytics-platform): generation, validation, analytics and offline dashboards.
+- [AWS operations guide](docs/AWS_RUNBOOK.md)
+- [Project explanation and interview preparation](docs/RESUME_PROJECT_AND_INTERVIEW.md)
+- [Local setup](docs/PHASE4_RUNBOOK.md)
+
 ## Repository use
-Copy this README and companion documents into the cloud-foundation project documentation. Keep the application source, .env and retained database volumes intact. Do not publish private keys, tokens, personal account details or raw portal screenshots.
+Clone this repository and follow the local setup or AWS operations guide. Keep the application source, .env and retained database volumes intact. Do not publish private keys, tokens, personal account details or raw portal screenshots.
