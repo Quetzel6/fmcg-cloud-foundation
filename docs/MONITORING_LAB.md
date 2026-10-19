@@ -1,6 +1,6 @@
 # Bounded monitoring and outage investigation lab
 
-Status: monitoring code has five local automated tests (including a temporary real HTTP server). **No claim of new Docker/EC2 drill completion yet.** Existing Docker/EC2 evidence in README remains separate.
+Status: five monitor tests passed locally; GitHub acceptance run 39231105225 passed for monitor code commit 478de9afb42d0263fb913854f49edc2aa2ea160e. The author completed a Mac Docker baseline and explicit PostgreSQL stop/start drill on 19 October 2026, summarized below. No new EC2 monitoring drill is claimed.
 
 ## What is checked
 
@@ -79,3 +79,23 @@ Do not report sample intervals as actual RTO/RPO. Polling only bounds observed d
 ## Portfolio acceptance
 
 Before adding a monitoring deployment claim: run baseline and drill, provide sanitized status/timestamp evidence, confirm recovered data/auth checks and link the exact commit/CI run. Local tests are not EC2 evidence. Continue to describe this as a single-host personal lab.
+
+## Author-provided Mac Docker evidence — 19 October 2026
+
+The author ran the pinned monitor from commit `478de9afb42d0263fb913854f49edc2aa2ea160e` against the existing Compose stack. Terminal transcripts were supplied in the project conversation; no secrets or raw desktop screenshots are committed.
+
+| Phase | Observed result (UTC) |
+|---|---|
+| Baseline | 12/12 healthy, 10:12:31 through 10:13:26; live 200, ready 200, anonymous summary 401 |
+| First timed attempt | 30/30 healthy; did not capture an outage, so not counted as outage-detection evidence |
+| Explicit DB stop | `docker compose stop postgres`; subsequent Compose listing showed only API running |
+| First failed sample | 10:28:26.078157: live 200, ready 503, anonymous summary 401; watch |
+| Second failed sample | 10:28:28.099194: same statuses; alert after two failures |
+| Third failed sample | 10:28:30.117689: same statuses; alert |
+| Restart and independent recovery probe | `docker compose start postgres`; at 10:29:11.189893 live 200, ready 200, anonymous summary 401; healthy |
+| Post-recovery auth | All six existing auth probes passed, including valid-token data access |
+| Post-recovery data | 150600 rows; quantity 1931506; amount_satang 11929529809; dates 2024-01-01 through 2026-09-30 |
+
+Recovery was observed in a separate monitor invocation, so this transcript does not prove a continuous in-process alert-to-healthy transition. That reset behavior is covered by automated tests. Stop/start timestamps were not instrumented: no RTO, RPO or guaranteed detection time is inferred. Data checks reconcile summary aggregates, not every row or database object. This was restart on the existing volume, not backup restoration.
+
+The accompanying Docker Desktop screenshot showed a different container (`fmcg-postgres`, postgres:latest), so it is not used as evidence for the Compose postgres:16 drill. The terminal transcript identifies the tested Compose service. GitHub CI runs on a disposable runner and does not attest EC2 health.
