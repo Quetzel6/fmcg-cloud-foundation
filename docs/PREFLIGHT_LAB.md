@@ -25,7 +25,9 @@ If any check fails, exit status is 1. Do not automatically run `compose up`, rem
 
 ## Implementation evidence
 
-Seven local tests cover healthy metadata, missing project files, wrong volume, wrong working directory, stopped state, empty env keys and redacted Docker failures. These tests simulate Docker metadata; they do not establish a successful actual-Docker trial. Existing monitor tests continue to pass. Author Mac preflight trial and remote CI for this change are pending.
+Seven local tests cover healthy metadata, missing project files, wrong volume, wrong working directory, stopped state, empty env keys and redacted Docker failures. These tests simulate Docker metadata; they do not establish a successful actual-Docker trial. Existing monitor tests continue to pass. GitHub acceptance [run 39356902071](https://github.com/Quetzel6/fmcg-cloud-foundation/actions/runs/39356902071) passed for code commit `2fb7c90bf1a409e83a173d795931a0a162b8dd50`.
+
+On 20 October 2026, the author supplied the complete Mac output of this pinned script against the existing `cloud-foundation` Compose project. All 16 reported checks passed: four required files, three configured env-key presence booleans, one API and one PostgreSQL container, matching project/working-directory labels, running/healthy states, and the expected `cloud-foundation_cloud_pg` mount. No token or password values were in the supplied output. This confirms point-in-time stack identity and health on Mac, not EC2 or database content; earlier auth/data and outage evidence is recorded separately in MONITORING_LAB.md.
 
 ## Explain this in an interview
 
