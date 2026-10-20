@@ -1,4 +1,4 @@
-# Verified project content for a CGP application
+# Cloud deployment project evidence and interview guide
 
 This is project wording, not a completed resume. Name/contact, education wording and expected graduation, employment dates/responsibilities, English proficiency, work eligibility and portfolio URL must be confirmed before preparing a final application. Do not infer years of employment from this lab.
 
@@ -11,10 +11,10 @@ Python · SQL · PostgreSQL · Docker Compose · AWS EC2 · Linux
 - Loaded and reconciled 150,600 synthetic sales records and verified matching sales aggregates after database restoration; confirmed an off-host backup with SHA-256.
 - Documented deployment and recovery procedures and verified data persistence, API authentication and database permissions after service recovery.
 
-Use these claims only with the supporting evidence and limitations in README. Do not claim production operations, measured business improvement, enterprise IAM, Terraform or executed CI without further implementation.
+Use these claims only with the supporting evidence and limitations in README. CI execution is documented there with its exact commit and runner scope; it is separate from EC2 verification. Production operations, measured business improvement, enterprise IAM and Terraform remain outside the implemented scope.
 
 ## 60–90 second explanation
-“I built this project to practise deploying and operating a small analytics service in the cloud. The business scenario is a synthetic FMCG sales platform. I deployed a Python API and PostgreSQL using Docker Compose on AWS EC2. The API reads through a restricted database role, and its data endpoints require a Bearer token. I kept the API on localhost and used an SSH tunnel for remote access. I verified 150,600 sales records, tested denied database operations, restored a backup into a separate database, and compared the sales totals. I also copied the backup to my Mac and verified its SHA-256. After restarting the environment, I checked data persistence and authentication again. This is a portfolio lab on a single server; the next improvements would be managed secrets, monitoring, infrastructure as code and a production deployment design.”
+“I built this project to practise deploying and operating a small analytics service in the cloud. The business scenario is a synthetic FMCG sales platform. I deployed a Python API and PostgreSQL using Docker Compose on AWS EC2. The API reads through a restricted database role, and its data endpoints require a Bearer token. I kept the API on localhost and used an SSH tunnel for remote access. I verified 150,600 sales records, tested denied database operations, restored a backup into a separate database, and compared the sales totals. I also copied the backup to my Mac and verified its SHA-256. After restarting the environment, I checked data persistence and authentication again. This is a portfolio lab on a single server; the next improvements would be managed secrets, extending the local monitoring drills to EC2, infrastructure as code and a production deployment design.”
 
 ## Interview preparation
 Why one EC2 host? It kept the demo scope and operations simple; shared API/database failure domain is a tradeoff, not a production recommendation.
@@ -24,5 +24,5 @@ What does backup verification prove? The copy is byte-identical; the restored sa
 What happens when the Mac disconnects? EC2 remains running; foreground commands may be interrupted, but saved EBS data persists.
 What remains for production? Workload requirements, identity and secrets, TLS, availability, monitoring, automated provisioning, recovery objectives and performance evaluation.
 
-## CGP alignment
+## Demonstrated capabilities and development areas
 Demonstrated: Linux, containers, basic cloud deployment, networking isolation, database access, troubleshooting and operational documentation. Still to establish: customer-facing solution discovery, practical depth across cloud services, professional English communication and an appropriate deployment identity. This project does not guarantee hiring eligibility or salary.
