@@ -1,6 +1,14 @@
 # FMCG Cloud Foundation — AWS Portfolio Case Study
 
-Status: AWS EC2 demo verified through author-provided terminal evidence, 13 October 2026. All business data are 100% synthetic. This is a personal portfolio lab, not production or customer consulting.
+Status: AWS EC2 demo verified through author-provided terminal evidence, 13 October 2026. Mac Docker monitoring/outage trial passed on 19 October; existing-stack preflight passed on 20 October. These new trials are not EC2 monitoring evidence. All business data are 100% synthetic. This is a personal portfolio lab, not production or customer consulting.
+
+## Operations case study
+
+[Read the operations case study](docs/OPERATIONS_CASE_STUDY.md): stack identification → health monitoring → database outage investigation → restart and auth/data validation. Includes exact environment boundaries, CI evidence and a three-minute interview walkthrough.
+
+- Mac outage observation: live 200 / ready 503 / anonymous summary 401; local watch then alert. A separate recovery probe and auth/data checks passed.
+- Mac preflight: all 16 checks passed against the existing Compose project and named database volume.
+- [Acceptance run 39356902071](https://github.com/Quetzel6/fmcg-cloud-foundation/actions/runs/39356902071): 26 tests plus Docker integration for code commit `2fb7c90bf1a409e83a173d795931a0a162b8dd50`. Later documentation-only commits have their own workflow status.
 
 ## Requirement and implementation
 A hypothetical analytics team needs a reproducible sales snapshot, authenticated read-only reporting, operational health checks and recoverable storage. The implementation uses Python, PostgreSQL 16 and Docker Compose on one Ubuntu 24.04 EC2 t3.small in Singapore. A single server was chosen to keep the demonstration simple; API and database share a failure domain and have no high availability.
