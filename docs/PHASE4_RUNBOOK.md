@@ -31,4 +31,4 @@ After Microsoft confirms the restriction is lifted, retry Resource Group creatio
 
 ## Evidence
 
-User terminal evidence: API database role denial checks passed; reload aggregates matched; restored sales aggregate matched original. Restore verification covers the sales aggregate only, not full table contents or role/ACL recovery. Local automated HTTP tests use database stubs; real Docker acceptance must run on the user's Mac. Azure deployment and GitHub CI have not run for this release.
+Owner-supplied terminal evidence for this historical phase: API database role denial checks passed; reload aggregates matched; restored sales aggregate matched original. Restore verification covers the sales aggregate only, not full table contents or role/ACL recovery. Local automated HTTP tests use database stubs; these stub tests do not verify Docker. Azure deployment was not completed. Later Mac, AWS and GitHub Actions results are recorded in the current [README](../README.md), with their separate execution scopes.
