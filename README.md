@@ -4,7 +4,7 @@ Status: AWS EC2 demo verified through author-provided terminal evidence, 13 Octo
 
 ## Operations case study
 
-[Read the operations case study](docs/OPERATIONS_CASE_STUDY.md): stack identification → health monitoring → database outage investigation → restart and auth/data validation. Includes exact environment boundaries, CI evidence and a three-minute interview walkthrough.
+[Read the operations case study](docs/OPERATIONS_CASE_STUDY.md): stack identification → health monitoring → database outage investigation → restart and auth/data validation. Includes exact environment boundaries, CI evidence and a short project walkthrough.
 
 - Mac outage observation: live 200 / ready 503 / anonymous summary 401; local watch then alert. A separate recovery probe and auth/data checks passed.
 - Mac preflight: all 16 checks passed against the existing Compose project and named database volume.
@@ -48,7 +48,7 @@ The first source comparison file was empty; a successful source query regenerate
 ## Limits and next improvements
 No public HTTPS endpoint, high availability, performance benchmark, automatic restart policy, centralized monitoring/alerts, infrastructure as code is claimed; GitHub Actions verification is recorded below. The standalone server allows local unauthenticated operation if its token environment is absent; Compose requires a token. The loader uses an elevated lab owner role. No measured business uplift or real customer data was used.
 
-Azure resource creation was blocked by a subscription restriction; this deployment was completed on AWS. AWS Free plan and initial 100 USD credit were observed at signup; current credit balance and actual spend have not been verified. Stop compute when idle, retain EBS for data, and review Billing. Budget alerts are not a spending cap.
+Azure resource creation was blocked by a subscription restriction; this deployment was completed on AWS. Stop compute when idle, retain EBS for data, and review Billing. Budget alerts are not a spending cap.
 
 ## GitHub Actions and project links
 
@@ -56,8 +56,8 @@ Azure resource creation was blocked by a subscription restriction; this deployme
 
 - [Analytics platform](https://github.com/Quetzel6/fmcg-analytics-platform): generation, validation, analytics and offline dashboards.
 - [AWS operations guide](docs/AWS_RUNBOOK.md)
-- [Project explanation and interview preparation](docs/RESUME_PROJECT_AND_INTERVIEW.md)
-- [Local setup](docs/PHASE4_RUNBOOK.md)
+- [Architecture and operational evidence](docs/OPERATIONS_CASE_STUDY.md)
+- [Local setup from a fresh checkout](docs/LOCAL_SETUP.md)
 
 ## Repository use
 Clone this repository and follow the local setup or AWS operations guide. Keep the application source, .env and retained database volumes intact. Do not publish private keys, tokens, personal account details or raw portal screenshots.
