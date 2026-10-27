@@ -1,0 +1,193 @@
+{
+  "application_manifest_sha256": "b5e371323e7d73b4e742a3f3e8ec9bf7e93d18aa46e7c4845e48c71eaec3b657",
+  "backup_sha256": "53dd05379c4dad03a1dcc0bded93d9cd20f5e9eb74602a2d7e8ffbf484a934ba",
+  "cleanup": "passed",
+  "drill_sha256": "11d668c58e7b919bb345c1684fefe21378d475597553576a64daaf218267a086",
+  "environment": "local disposable Docker; not AWS",
+  "finished_at_utc": "2026-10-27T08:03:10.474745+00:00",
+  "image_id": "sha256:718310d720a3e5e549483481282880ac8325dbc886b3506f1f46756f074df3af",
+  "postgres_image_id": "sha256:066167ff39c2a612402ce99b734ea1cff92a9d1f2ac52f697a5f0384f0d88d6b",
+  "run_id": "fmcg-recovery-c1d15b53bb1a44ee",
+  "schema_version": 1,
+  "source_revision": "fb365c18bf0bde1fc809ea53471e10a6dd1376d8",
+  "stages": {
+    "baseline": {
+      "access_checks": "passed",
+      "http": {
+        "anonymous": 401,
+        "data": 200,
+        "live": 200,
+        "ready": 200,
+        "sales": {
+          "amount_satang": "11929529809",
+          "as_of_date": "2026-09-30",
+          "data_class": "100% SYNTHETIC",
+          "quantity": "1931506",
+          "row_count": 150600,
+          "sales_type": "SO",
+          "start_date": "2024-01-01"
+        },
+        "summary": 200,
+        "wrong_token": 401
+      },
+      "tables": {
+        "fmcg.dim_customer": {
+          "content_md5": "ddf57cea01c87472fb093f2ab2214796",
+          "rows": 3
+        },
+        "fmcg.dim_date": {
+          "content_md5": "40808ba14a17c9c289fc6e67b3f6dcd8",
+          "rows": 1004
+        },
+        "fmcg.dim_price": {
+          "content_md5": "c61008d51e55939ddb3a25ee96f73503",
+          "rows": 30
+        },
+        "fmcg.dim_product": {
+          "content_md5": "6ce37775152fb8834c4dd5c72118f128",
+          "rows": 10
+        },
+        "fmcg.dim_promotion": {
+          "content_md5": "ce053f0ce5ec1bc0b322f875d3de9a29",
+          "rows": 240
+        },
+        "fmcg.dim_store": {
+          "content_md5": "e3468dec6da99a1bf2ab4e24c23cd6d0",
+          "rows": 15
+        },
+        "fmcg.fact_inventory_daily": {
+          "content_md5": "eb95014dfd5c9275f3ecef07b4860ba8",
+          "rows": 150600
+        },
+        "fmcg.fact_order_line": {
+          "content_md5": "0058b570213bad7286e8802f7dab57d4",
+          "rows": 22681
+        },
+        "fmcg.fact_sales_daily": {
+          "content_md5": "f0009847fe132848237bf3ae5cdb7f5f",
+          "rows": 150600
+        },
+        "fmcg.fact_target_monthly": {
+          "content_md5": "5a3377ca1a300a56711780f43ee90e98",
+          "rows": 288
+        },
+        "truth.truth_demand_daily": {
+          "content_md5": "ac0a47bf8ae619bfbf0276000ee6b349",
+          "rows": 150600
+        },
+        "truth.truth_promo_effect": {
+          "content_md5": "947f8c3fde61c6d2cfd2147398e1199c",
+          "rows": 240
+        },
+        "truth.truth_supply_disruption": {
+          "content_md5": "e1f6635dd43ade319bb652a9f9a38633",
+          "rows": 24
+        }
+      }
+    },
+    "image_matches_checkout": true,
+    "recovered": {
+      "access_checks": "passed",
+      "http": {
+        "anonymous": 401,
+        "data": 200,
+        "live": 200,
+        "ready": 200,
+        "sales": {
+          "amount_satang": "11929529809",
+          "as_of_date": "2026-09-30",
+          "data_class": "100% SYNTHETIC",
+          "quantity": "1931506",
+          "row_count": 150600,
+          "sales_type": "SO",
+          "start_date": "2024-01-01"
+        },
+        "summary": 200,
+        "wrong_token": 401
+      },
+      "tables": {
+        "fmcg.dim_customer": {
+          "content_md5": "ddf57cea01c87472fb093f2ab2214796",
+          "rows": 3
+        },
+        "fmcg.dim_date": {
+          "content_md5": "40808ba14a17c9c289fc6e67b3f6dcd8",
+          "rows": 1004
+        },
+        "fmcg.dim_price": {
+          "content_md5": "c61008d51e55939ddb3a25ee96f73503",
+          "rows": 30
+        },
+        "fmcg.dim_product": {
+          "content_md5": "6ce37775152fb8834c4dd5c72118f128",
+          "rows": 10
+        },
+        "fmcg.dim_promotion": {
+          "content_md5": "ce053f0ce5ec1bc0b322f875d3de9a29",
+          "rows": 240
+        },
+        "fmcg.dim_store": {
+          "content_md5": "e3468dec6da99a1bf2ab4e24c23cd6d0",
+          "rows": 15
+        },
+        "fmcg.fact_inventory_daily": {
+          "content_md5": "eb95014dfd5c9275f3ecef07b4860ba8",
+          "rows": 150600
+        },
+        "fmcg.fact_order_line": {
+          "content_md5": "0058b570213bad7286e8802f7dab57d4",
+          "rows": 22681
+        },
+        "fmcg.fact_sales_daily": {
+          "content_md5": "f0009847fe132848237bf3ae5cdb7f5f",
+          "rows": 150600
+        },
+        "fmcg.fact_target_monthly": {
+          "content_md5": "5a3377ca1a300a56711780f43ee90e98",
+          "rows": 288
+        },
+        "truth.truth_demand_daily": {
+          "content_md5": "ac0a47bf8ae619bfbf0276000ee6b349",
+          "rows": 150600
+        },
+        "truth.truth_promo_effect": {
+          "content_md5": "947f8c3fde61c6d2cfd2147398e1199c",
+          "rows": 240
+        },
+        "truth.truth_supply_disruption": {
+          "content_md5": "e1f6635dd43ade319bb652a9f9a38633",
+          "rows": 24
+        }
+      }
+    },
+    "restart_does_not_restore_data": {
+      "anonymous": 401,
+      "data": 503,
+      "live": 200,
+      "ready": 200,
+      "summary": 503,
+      "wrong_token": 401
+    },
+    "restored_without_api_grants": {
+      "http": {
+        "anonymous": 401,
+        "data": 503,
+        "live": 200,
+        "ready": 200,
+        "summary": 503,
+        "wrong_token": 401
+      },
+      "tables_match": true
+    },
+    "sales_table_lost": {
+      "anonymous": 401,
+      "data": 503,
+      "live": 200,
+      "ready": 200,
+      "summary": 503,
+      "wrong_token": 401
+    }
+  },
+  "started_at_utc": "2026-10-27T08:01:30.262711+00:00",
+  "status": "passed"
+}
