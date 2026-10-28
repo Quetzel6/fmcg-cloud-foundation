@@ -12,7 +12,9 @@ Status: AWS EC2 demo verified through author-provided terminal evidence, 13 Octo
 
 ## Reproducible data recovery drill
 
-[Recovery runbook and evidence](docs/RECOVERY_DRILL.md) adds a disposable Docker drill for sales-table loss: backup, failed restart-only recovery, transactional restore, table-content reconciliation and restored API permissions. The new trial is local, not AWS; remote CI execution of this addition is not yet verified. Historical AWS and Mac evidence below retains its original scope. During this scenario, readiness stays **200** while authenticated data returns **503**; restoring data without ACLs requires reapplying the API grants before reporting recovers.
+[Recovery runbook and evidence](docs/RECOVERY_DRILL.md) adds a disposable Docker drill for sales-table loss: backup, failed restart-only recovery, transactional restore, table-content reconciliation and restored API permissions. The new trial is local Docker, not AWS. Remote CI was independently verified: the [post-merge main push run](https://github.com/Quetzel6/fmcg-cloud-foundation/actions/runs/40618971278) completed successfully for merge commit `a6e13eccb6b36a7676d8d6cb11190ba34411af72`. This is GitHub-runner evidence, not AWS recovery evidence. Historical AWS and Mac evidence below retains its original scope. During this scenario, readiness stays **200** while authenticated data returns **503**; restoring data without ACLs requires reapplying the API grants before reporting recovers.
+
+The next experiment is defined in the [AWS off-host backup and fresh-host restore acceptance plan](docs/AWS_RECOVERY_ACCEPTANCE.md). It is **planned, not executed**; measured recovery and cleanup evidence are required before changing resume claims.
 
 ## Requirement and implementation
 A hypothetical analytics team needs a reproducible sales snapshot, authenticated read-only reporting, operational health checks and recoverable storage. The implementation uses Python, PostgreSQL 16 and Docker Compose on one Ubuntu 24.04 EC2 t3.small in Singapore. A single server was chosen to keep the demonstration simple; API and database share a failure domain and have no high availability.
