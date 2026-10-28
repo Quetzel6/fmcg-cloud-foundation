@@ -42,6 +42,15 @@ jobs:
             sleep 2
           done
           exit 1
+      - name: Disposable backup restore and access recovery
+        run: python scripts_recovery_drill.py --image fmcg-cloud-foundation-api --output /tmp/fmcg-recovery.json
+      - name: Save sanitized recovery evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: recovery-evidence
+          path: /tmp/fmcg-recovery.json
+          if-no-files-found: ignore
       - name: Teardown disposable CI database
         if: always()
         run: docker compose down -v
